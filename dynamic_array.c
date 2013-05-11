@@ -3,7 +3,12 @@
 
 #include "dynamic_array.h"
 
-dynamic_array_t create_array(int size)
+dynamic_array_t create_array()
+{
+	return create_array_with_size(DEFAULT_SIZE);
+}
+
+dynamic_array_t create_array_with_size(int size)
 {
 	dynamic_array_t result;
 
@@ -26,7 +31,7 @@ dynamic_array_t create_array(int size)
 	return result;
 }
 
-void add(dynamic_array_t *array, int index, int element)
+void insert(dynamic_array_t *array, int index, int number)
 {
 	// If the index doesn't make sense, don't do anything.
 	if (index < 0)
@@ -34,50 +39,34 @@ void add(dynamic_array_t *array, int index, int element)
 		return;
 	}
 	
-	// If we have enough space, just put the value in the requested location.
-	if (index < array->size)
+	// Array's new size
+	int new_size = array->size * 2;
+	int *new_elements = calloc(new_size, sizeof(int));
+	
+	for (int i = 0, j = 0; i < array->size; i++, j++)
 	{
-		array->elements[index] = element;
-	}
-	else
-	{
-		// Our underlaying array is too small. Expand it.
-		
-		// Get the current size.
-		int new_size = array->size;
-		
-		// Double the size until we can address the requested index.
-		while (new_size <= index)
+		// This is the index we needed. Assign the value and move on to the 
+		// next value.
+		if (i == index)
 		{
-			new_size *= 2;
+			new_elements[j] = number;
+			j++;
+			continue;
 		}
 		
-		// Allocate and zero out a new memory location with enough space for 
-		// the requested index.
-		int *new_elements = calloc(new_size, sizeof(int));
-		
-		// Get all the values from the old location to the new one.
-		for (int i = 0; i < array->size; i++)
-		{
-			new_elements[i] = array->elements[i];
-		}
-		
-		// Free the old structure.
-		free(array->elements);
-		
-		// Assign the new data structure and set the size
-		array->elements = new_elements;
-		array->size = new_size;
-		
-		// Finally, assign the value to the requsted index.
-		array->elements[index] = element;
+		new_elements[j] = array->elements[i];
 	}
+	
+	free(array->elements);
+	
+	array->elements = new_elements;
+	array->size = new_size;	
 }
 
 int get(dynamic_array_t array, int index)
 {
 	// Make sure the index is valid. If not, return the error index.
-	if (index >= array.size)
+	if (index >= array.size || index < 0)
 	{
 		return INVALID_INDEX;
 	}
@@ -86,37 +75,98 @@ int get(dynamic_array_t array, int index)
 	return array.elements[index];
 }
 
-int set(dynamic_array_t *array, int index, int number)
+void set(dynamic_array_t *array, int index, int number)
 {
 	if (index >= array->size || index < 0)
 	{
-		return INVALID_INDEX;
+		return;
 	}
 	
 	array->elements[index] = number;
-	
-	return get(*array, index);
 }
 
-int remove_e(dynamic_array_t *array, int index)
+int delete(dynamic_array_t *array, int index)
 {
+	// Make sure the index is valid.
 	if (index >= array->size || index < 0)
 	{
 		return INVALID_INDEX;
 	}
 	
-	int result = array->elements[index];
+	// Get the current value so we can return it.
+	int result = get(*array, index);
 	
-	array->elements[index] = 0;
+	// Calculate the new potential size of the array
+	int potential_new_size = array->size / 2;
 	
+	bool should_shrink = true;
+	
+	// Figure out if we can shrink the array
+	for (int i = potential_new_size + 1; i < array->size; i++)
+	{
+		// We found a non-zero element. We can't shrink the array, so 
+		// short-ciruit the loop.
+		if (array->elements[i] > 0)
+		{
+			should_shrink = false;
+			break;
+		}
+	}
+	
+	int *new_elements;
+	
+	if (should_shrink)
+	{
+		// Shrinking the array, so allocate a new memory location for the new 
+		// smaller array.
+		new_elements = calloc(potential_new_size, sizeof(int));
+		
+		// Now move all the existing values to the new memory location
+		for (int i = 0; i < potential_new_size; i++)
+		{
+			new_elements[i] = array->elements[i];
+		}
+		
+		// Set the array size.
+		array->size = potential_new_size;
+	}
+	else
+	{
+		// We have to move every element up by one, so create a new memory 
+		// location.
+		new_elements = calloc(array->size, sizeof(int));
+		
+		// Now loop over the current memory location and move all the values to
+		// a new lower index.
+		for (int i = 0, j = 0; i < array->size - 1; i++, j++)
+		{
+			// This is the index we removed, so skip it.
+			if (i == index)
+			{
+				j++;
+			}
+			
+			new_elements[i] = array->elements[j];
+		}
+	}
+	
+	// Free the old memory location
+	free(array->elements);
+	
+	// Assign the new memory location to the strcut
+	array->elements = new_elements;
+	
+	// We're done. Return the value that was removed.
 	return result;
 }
 
 void clear(dynamic_array_t *array)
 {
+	// Reset the size and free the memory location.
 	array->size = 0;
 	free(array->elements);
 	
+	// Reallocate a fresh new memory location for use.
 	array->elements = calloc(DEFAULT_SIZE, sizeof(int));
 }
 
@@ -177,7 +227,7 @@ bool is_empty(dynamic_array_t array)
 	
 	for (int i = 0; i < array.size; i++)
 	{
-		if (get(array, i) != 0)
+		if (get(array, i) > 0)
 		{
 			result = false;
 			
