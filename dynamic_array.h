@@ -63,10 +63,11 @@ dynamic_array_t create_array();
 dynamic_array_t create_array_with_size(int size);
 
 /**
- * Inserts `element` at `index` of `array`.
+ * Inserts `element` at `index` of `array` by inserting `number` at the 
+ * specified index and shifting all the remaining elements down by one index.
  *
- * The size of the underlaying array is doubled every time a value is inserted 
- * at a particular index. Therefore, this is an O(n) operation.
+ * Since every insert requires the elements to be shifted, the complexity of 
+ * this function is O(n).
  *
  * @param array Dynamic array to use.
  * @param index Where to put `element`.
@@ -96,6 +97,9 @@ int get(dynamic_array_t array, int index);
  * array's size. If `index` is less or greater than array's size, 
  * `INVALID_INDEX` is returned.
  *
+ * Since we have an array as the underlaying data structure, we can do this in 
+ * constant time, so O(1).
+ *
  * @param array The array to use.
  * @param index The index at which `number` should be set.
  * @param number The value to set.
@@ -108,8 +112,8 @@ void set(dynamic_array_t *array, int index, int number);
  * Deletes the value at `index` and shrinks the size of the underlaying array 
  * if necessary.
  *
- * Since the underlaying data structure is modified, this function is O(n) in 
- * the worst case.
+ * Since deleting an element requires all the elements to be shifed up, the 
+ * complexity of this function is O(n).
  *
  * @param array The dynamic array to use.
  * @param index The index whose value is to be removed.
@@ -134,7 +138,8 @@ void clear(dynamic_array_t *array);
 /**
  * Determines whether `array` contains `number`.
  *
- * The worst case complexity for this function is O(n)
+ * We have to look at n/2 elements, on average, for this function. Therefore, 
+ * the complexity for this function is O(n).
  *
  * @param array The array to search.
  * @param number The value to look for.
@@ -148,6 +153,9 @@ bool contains(dynamic_array_t array, int number);
 /**
  * Traverses `array` to find `number` and then returns the index within `array`
  * for `number`.
+ *
+ * We have to look n/2 elements, on average, for the result. Therefore the
+ * complexity for this function is O(n).
  *
  * @param array The array to search.
  * @param number The value whose index we need.
@@ -163,6 +171,9 @@ int index_of(dynamic_array_t array, int number);
  * Traverses `array` in reverse order to find `number` and then returns the 
  * first index from the end within `array` for `number`.
  *
+ * We have to look at n/2 elements, on average, for the result. Therefore, the 
+ * complexity for this function is O(n).
+ *
  * @param array The array to search.
  * @param number The value whose index we need.
  *
@@ -176,6 +187,9 @@ int last_index_of(dynamic_array_t array, int number);
 
 /**
  * Determines whether `array` is empty.
+ *
+ * We have to look at n/2 elements, on average, to determine if the arraay is 
+ * empty. So the complexity is O(n).
  *
  * @param array The array to use.
  *

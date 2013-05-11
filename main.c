@@ -11,32 +11,55 @@ int main(int argc, char **argv)
 	
 	set(&array, 2, 58);
 	set(&array, 6, 43);
-	
 	printf("Setting a couple of values:\n");
 	print_array(array);
 	
 	set(&array, 10, 200);
-	
 	printf("Setting index '10' to '200':\n");
 	print_array(array);
 	
-	insert(&array, 3, 69);
-	
+	insert(&array, 3, 69);	
 	printf("Inserting '69' at index '3':\n");
-	print_array(array);
-	
-	set(&array, 8, 100);
-
-	printf("Setting index '8' to '100':\n");
 	print_array(array);
 	
 	printf("Index 2: %i\n", get(array, 2));
 	printf("Index 3: %i\n", get(array, 3));
-	printf("Index 8: %i\n\n", get(array, 8));
+	printf("Index 7: %i\n\n", get(array, 7));
 	
 	delete(&array, 6);
-	
 	printf("Deleting index '6':\n");
+	print_array(array);
+	
+	insert(&array, 5, 55);
+	printf("Inserting '55' at index '5':\n");
+	print_array(array);
+	
+	insert(&array, 10, 100);
+	printf("Inserting '100' at index '10':\n");
+	print_array(array);
+	
+	set(&array, 8, 45);
+	printf("Setting index '8' to '45':\n");
+	print_array(array);
+	
+	set(&array, 15, 32);
+	printf("Setting index '15' to '32':\n");
+	print_array(array);
+	
+	delete(&array, 11);
+	printf("Deleting index '11':\n");
+	print_array(array);
+	
+	delete(&array, 11);
+	printf("Deleting index '11':\n");
+	print_array(array);
+	
+	delete(&array, 11);
+	printf("Deleting index '11':\n");
+	print_array(array);
+	
+	insert(&array, 8, 1);
+	printf("Inserting '1' at index '8':\n");
 	print_array(array);
 	
 	return 0;

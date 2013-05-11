@@ -39,28 +39,45 @@ void insert(dynamic_array_t *array, int index, int number)
 		return;
 	}
 	
-	// Array's new size
-	int new_size = array->size * 2;
-	int *new_elements = calloc(new_size, sizeof(int));
+	int *new_elements;
+	int new_size = array->size;
+	bool should_resize = false;
+	
+	if (array->elements[array->size - 1] == 0)
+	{
+		// The new element can be inserted at the requested index and we can 
+		// shift everything down by one.
+		new_elements = calloc(array->size, sizeof(int));
+	}
+	else
+	{
+		// Array's new size
+		new_size = array->size * 2;
+		new_elements = calloc(new_size, sizeof(int));
+	}
+	
+	if (index > array->size)
+	{
+		new_elements[index] = number;
+	}
 	
 	for (int i = 0, j = 0; i < array->size; i++, j++)
 	{
-		// This is the index we needed. Assign the value and move on to the 
+		// This is the index we needed. Assign the value and move on to the
 		// next value.
 		if (i == index)
 		{
 			new_elements[j] = number;
 			j++;
-			continue;
 		}
 		
 		new_elements[j] = array->elements[i];
 	}
 	
 	free(array->elements);
-	
+
 	array->elements = new_elements;
-	array->size = new_size;	
+	array->size = new_size;
 }
 
 int get(dynamic_array_t array, int index)
