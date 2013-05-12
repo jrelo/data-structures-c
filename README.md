@@ -30,7 +30,8 @@ all, I'm doing this to (re)learn.
 * Get a chance to play around with pure C again. No strange libraries or weird attachments. Just me, the compiler and the kernel.
 
 ### Progress
-* Dynamic Array: <span style="color: green;">**Fully implemented**</span>
+* Dynamic Array: **Fully implemented**
+* Singly-Linked List: _Started_
 
 ### Environment
 It shouldn't really matter, but I'm doing this on Mac OS X 10.8 (Mountain Lion) with the latest version of Xcode's command line tools.

@@ -1,8 +1,37 @@
 #include <stdio.h>
 
 #include "dynamic_array.h"
+#include "singly_linked_list.h"
+
+void test_dynamic_array();
+void test_singly_linked_list();
 
 int main(int argc, char **argv)
+{
+	test_singly_linked_list();
+	
+	return 0;
+}
+
+void test_singly_linked_list()
+{
+	singly_linked_list_t list = create_singly_linked_list();
+	
+	printf("value: %i\n", list.value);
+	
+	list.value = 1;
+	
+	printf("value: %i\n", list.value);
+	
+	singly_linked_list_t next = create_singly_linked_list();
+	next.value = 2;
+	
+	list.next = &next;
+	
+	printf("contains: %i\n", contains_value(&list, 2));
+}
+
+void test_dynamic_array()
 {
 	dynamic_array_t array = create_array();
 	
@@ -61,6 +90,4 @@ int main(int argc, char **argv)
 	insert(&array, 8, 1);
 	printf("Inserting '1' at index '8':\n");
 	print_array(array);
-	
-	return 0;
 }

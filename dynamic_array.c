@@ -180,11 +180,11 @@ int delete(dynamic_array_t *array, int index)
 void clear(dynamic_array_t *array)
 {
 	// Reset the size and free the memory location.
-	array->size = 0;
 	free(array->elements);
 	
 	// Reallocate a fresh new memory location for use.
 	array->elements = calloc(DEFAULT_SIZE, sizeof(int));
+	array->size = DEFAULT_SIZE;
 }
 
 bool contains(dynamic_array_t array, int number)
