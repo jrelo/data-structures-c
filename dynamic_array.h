@@ -36,7 +36,7 @@ dynamic_array_t;
 #define DEFAULT_SIZE 8
 
 /**
- * Allocates and prepares a dynamic array type a capacity to hold `DEFAULT_SIZE`
+ * Allocates and prepares a dynamic array with capacity to hold `DEFAULT_SIZE`
  * items.
  *
  * @return A dynamic array with the allocated space to hold `DEFAULT_SIZE` 

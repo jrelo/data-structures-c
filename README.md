@@ -1,6 +1,5 @@
 data-structures-c
 -----------------
-
 A very naive implementation of the fundamental, popular and well-known data 
 structures in pure C for educational purposes.
 
@@ -38,8 +37,8 @@ It shouldn't really matter, but I'm doing this on Mac OS X 10.8 (Mountain Lion) 
 
 
 ### How to Compile and Run
-In case you're crazy enough to want to look my ugly code, there is a makefile 
-that can compile and run all the data structures and the tests. Simple run the 
+In case you're crazy enough to want to look at my ugly code, there is a makefile 
+that can compile and run all the data structures and the tests. Simply run the 
 following:
 
     $ make run
