@@ -26,6 +26,8 @@ dynamic_array_t create_array_with_size(int size)
 	
 	// Assign the size and allocate enough memory for size.
 	result.size = size;
+	
+	// TODO: Consider using realloc()
 	result.elements = calloc(result.size, sizeof(int));
 	
 	return result;

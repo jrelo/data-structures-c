@@ -17,8 +17,8 @@ all, I'm doing this to (re)learn.
 
 ### Goals
 * Fully implement the following data structures in C. Note that this list is incomplete. I'll add more data structures as I work through these ones.
-    * Dynamic Array
-    * Singly-Linked List
+    * Dynamic Array: **Fully implemented**
+    * Singly-Linked List: **Fully implemented**
     * Doubly-Linked List
     * Hash/dictionary of some kind
     * Binary Tree
@@ -29,38 +29,33 @@ all, I'm doing this to (re)learn.
 * Re-learn/remember the intricacies of implementing data structures
 * Get a chance to play around with pure C again. No strange libraries or weird attachments. Just me, the compiler and the kernel.
 
-### Progress
-* Dynamic Array: **Fully implemented**
-* Singly-Linked List: _Started_
-
 ### Environment
 It shouldn't really matter, but I'm doing this on Mac OS X 10.8 (Mountain Lion) with the latest version of Xcode's command line tools.
-
 
 ### How to Compile and Run
 In case you're crazy enough to want to look at my ugly code, there is a makefile 
 that can compile and run all the data structures and the tests. Simply run the 
 following:
-
+    
     $ make run
-
+    
 ### Licence
     data-structures-c
-
+    
     MIT License (MIT)
-
+    
     Copyright (c) 2013 Ashkan Farhadtouski
-
+    
     Permission is hereby granted, free of charge, to any person obtaining a copy
-    of this software and associated documentation files (the "Software"), to deal
-    in the Software without restriction, including without limitation the rights
-    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-    copies of the Software, and to permit persons to whom the Software is
+    of this software and associated documentation files (the "Software"), to 
+    deal in the Software without restriction, including without limitation the 
+    rights to use, copy, modify, merge, publish, distribute, sublicense, and/or 
+    sell copies of the Software, and to permit persons to whom the Software is
     furnished to do so, subject to the following conditions:
-
+    
     The above copyright notice and this permission notice shall be included in
     all copies or substantial portions of the Software.
-
+    
     THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
     IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
     FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
