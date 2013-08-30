@@ -2,15 +2,33 @@
 
 #include "dynamic_array.h"
 #include "singly_linked_list.h"
+#include "doubly_linked_list.h"
 
 void test_dynamic_array();
 void test_singly_linked_list();
+void test_doubly_linked_list();
 
 int main(int argc, char **argv)
 {
-	test_singly_linked_list();
-	
+	test_doubly_linked_list();
+    
 	return 0;
+}
+
+void test_doubly_linked_list()
+{
+    printf("Testing doubly linked list\n");
+    
+    doubly_linked_list_node_t l = create_doubly_linked_list_node();
+    doubly_linked_list_node_t *list = &l;
+    
+    printf("New list created.\n");
+    print_list_d(list);
+    
+    list->value = 1;
+    
+    printf("Set first node value.\n");
+    print_list_d(list);
 }
 
 void test_singly_linked_list()

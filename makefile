@@ -1,6 +1,6 @@
 # Simple makefile for the project
 
-source_files = main.c dynamic_array.c singly_linked_list.c
+source_files = main.c dynamic_array.c singly_linked_list.c doubly_linked_list.c
 runner_name = runner
 
 all: $(source_files)

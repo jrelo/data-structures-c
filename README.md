@@ -19,7 +19,7 @@ all, I'm doing this to (re)learn.
 * Fully implement the following data structures in C. Note that this list is incomplete. I'll add more data structures as I work through these ones.
     * Dynamic Array: **Fully implemented**
     * Singly-Linked List: **Fully implemented**
-    * Doubly-Linked List
+    * Doubly-Linked List: *Started*
     * Hash/dictionary of some kind
     * Binary Tree
     * Graph, of some kind. Perhaps Adjacency List?

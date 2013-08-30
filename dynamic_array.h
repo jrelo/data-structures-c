@@ -133,7 +133,7 @@ int delete(dynamic_array_t *array, int index);
  *
  * @see is_empty(dynamic_array_t *)
  */
-void clear(dynamic_array_t *array);
+void clear_array(dynamic_array_t *array);
 
 /**
  * Determines whether `array` contains `number`.

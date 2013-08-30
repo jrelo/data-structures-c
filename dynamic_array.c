@@ -43,7 +43,6 @@ void insert(dynamic_array_t *array, int index, int number)
 	
 	int *new_elements;
 	int new_size = array->size;
-	bool should_resize = false;
 	
 	if (array->elements[array->size - 1] == 0)
 	{
@@ -179,7 +178,7 @@ int delete(dynamic_array_t *array, int index)
 	return result;
 }
 
-void clear(dynamic_array_t *array)
+void clear_array(dynamic_array_t *array)
 {
 	// Reset the size and free the memory location.
 	free(array->elements);
