@@ -4,9 +4,9 @@
 #include "singly_linked_list.h"
 #include "doubly_linked_list.h"
 
-void test_dynamic_array();
-void test_singly_linked_list();
-void test_doubly_linked_list();
+void test_dynamic_array(void);
+void test_singly_linked_list(void);
+void test_doubly_linked_list(void);
 
 int main(int argc, char **argv)
 {
@@ -15,12 +15,11 @@ int main(int argc, char **argv)
 	return 0;
 }
 
-void test_doubly_linked_list()
+void test_doubly_linked_list(void)
 {
     printf("Testing doubly linked list\n");
     
-    doubly_linked_list_node_t l = create_doubly_linked_list_node();
-    doubly_linked_list_node_t *list = &l;
+    doubly_linked_list_node_t *list = create_doubly_linked_list_node();
     
     printf("New list created.\n");
     print_list_d(list);
@@ -29,12 +28,13 @@ void test_doubly_linked_list()
     
     printf("Set first node value.\n");
     print_list_d(list);
+    
+    delete_doubly_linked_list_node(list);
 }
 
 void test_singly_linked_list()
 {
-    singly_linked_list_node_t l = create_singly_linked_list_node();
-    singly_linked_list_node_t *list = &l;
+    singly_linked_list_node_t *list = create_singly_linked_list_node();
     
     printf("New list created.\n");
     print_list(list);
@@ -44,8 +44,7 @@ void test_singly_linked_list()
     printf("Set first node value.\n");
     print_list(list);
     
-    singly_linked_list_node_t n2 = create_singly_linked_list_node();
-    singly_linked_list_node_t *node2 = &n2;
+    singly_linked_list_node_t *node2 = create_singly_linked_list_node();
     node2->value = 2;
     
     list->next = node2;
@@ -56,8 +55,7 @@ void test_singly_linked_list()
     printf("list contains 2?: %s\n", contains_value(list, 2) ? "Yes" : "No");
     printf("list contains 3?: %s\n\n", contains_value(list, 3) ? "Yes" : "No");
     
-    singly_linked_list_node_t n3 = create_singly_linked_list_node();
-    singly_linked_list_node_t *node3 = &n3;
+    singly_linked_list_node_t *node3 = create_singly_linked_list_node();
     node3->value = 3;
     
     printf("Push node3 onto list:\n");
@@ -79,8 +77,7 @@ void test_singly_linked_list()
     print_list(list);
     
     printf("Create node4 and insert at the beginning:\n");
-    singly_linked_list_node_t n4 = create_singly_linked_list_node();
-    singly_linked_list_node_t *node4 = &n4;
+    singly_linked_list_node_t *node4 = create_singly_linked_list_node();
     node4->value = 4;
     list = insert_beginning(list, node4);
     print_list(list);
@@ -90,12 +87,10 @@ void test_singly_linked_list()
     print_list(list);
     
     printf("Create two new nodes and add them and node4 to the list:\n");
-    singly_linked_list_node_t n5 = create_singly_linked_list_node();
-    singly_linked_list_node_t *node5 = &n5;
+    singly_linked_list_node_t *node5 = create_singly_linked_list_node();
     node5->value = 5;
     
-    singly_linked_list_node_t n4prime = create_singly_linked_list_node();
-    singly_linked_list_node_t *node4prime = &n4prime;
+    singly_linked_list_node_t *node4prime = create_singly_linked_list_node();
     node4prime->value = 4;
     
     node4->next = NULL;
@@ -133,8 +128,7 @@ void test_singly_linked_list()
     printf("\n");
 
     printf("Create node6 and add it after node5\n");
-    singly_linked_list_node_t n6 = create_singly_linked_list_node();
-    singly_linked_list_node_t *node6 = &n6;
+    singly_linked_list_node_t *node6 = create_singly_linked_list_node();
     node6->value = 6;
     insert_node_after(list, node6, node5);
     print_list(list);
@@ -142,6 +136,14 @@ void test_singly_linked_list()
     printf("Remove node4 from the list\n");
     remove_node(list, node4);
     print_list(list);
+    
+    delete_singly_linked_list_node(node2);
+    delete_singly_linked_list_node(node3);
+    delete_singly_linked_list_node(node4);
+    delete_singly_linked_list_node(node4prime);
+    delete_singly_linked_list_node(node5);
+    delete_singly_linked_list_node(node6);
+    delete_singly_linked_list_node(list);
 }
 
 void test_dynamic_array()

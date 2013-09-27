@@ -3,11 +3,16 @@
 
 #include "singly_linked_list.h"
 
-singly_linked_list_node_t create_singly_linked_list_node()
+singly_linked_list_node_t *create_singly_linked_list_node(void)
 {
-	singly_linked_list_node_t list = { 0, NULL };
+	singly_linked_list_node_t *list = calloc(1, sizeof(singly_linked_list_node_t));
 	
 	return list;
+}
+
+void delete_singly_linked_list_node(singly_linked_list_node_t *node)
+{
+    free(node);
 }
 
 void push(singly_linked_list_node_t *list, singly_linked_list_node_t *node)

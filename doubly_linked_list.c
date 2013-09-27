@@ -3,11 +3,16 @@
 
 #include "doubly_linked_list.h"
 
-doubly_linked_list_node_t create_doubly_linked_list_node()
+doubly_linked_list_node_t *create_doubly_linked_list_node(void)
 {
-	doubly_linked_list_node_t list = { 0, NULL, NULL };
+	doubly_linked_list_node_t *list = calloc(1, sizeof(doubly_linked_list_node_t));
 	
 	return list;
+}
+
+void delete_doubly_linked_list_node(doubly_linked_list_node_t *node)
+{
+    free(node);
 }
 
 void push_d(doubly_linked_list_node_t *list, doubly_linked_list_node_t *node)
@@ -35,12 +40,12 @@ void remove_node_d(doubly_linked_list_node_t *list, doubly_linked_list_node_t *n
     
 }
 
-doubly_linked_list_node_t * insert_beginning_d(doubly_linked_list_node_t *list, doubly_linked_list_node_t *node)
+doubly_linked_list_node_t * insert_node_beginning_d(doubly_linked_list_node_t *list, doubly_linked_list_node_t *node)
 {
     return NULL;
 }
 
-doubly_linked_list_node_t * remove_beginning_(doubly_linked_list_node_t *list)
+doubly_linked_list_node_t * remove_node_beginning_d(doubly_linked_list_node_t *list)
 {
     return NULL;
 }

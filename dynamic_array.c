@@ -3,7 +3,7 @@
 
 #include "dynamic_array.h"
 
-dynamic_array_t create_array()
+dynamic_array_t create_array(void)
 {
 	return create_array_with_size(DEFAULT_SIZE);
 }

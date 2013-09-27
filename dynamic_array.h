@@ -44,7 +44,7 @@ dynamic_array_t;
  *
  * @see create_array_with_size(int)
  */
-dynamic_array_t create_array();
+dynamic_array_t create_array(void);
 
 /**
  * Allocates and prepares a dynamic array type with the specified size 

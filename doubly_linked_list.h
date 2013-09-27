@@ -9,13 +9,14 @@ typedef struct doubly_linked_list_node_t
 }
 doubly_linked_list_node_t;
 
-doubly_linked_list_node_t create_doubly_linked_list_node();
+doubly_linked_list_node_t *create_doubly_linked_list_node(void);
+void delete_doubly_linked_list_node(doubly_linked_list_node_t *node);
 
 void push_d(doubly_linked_list_node_t *list, doubly_linked_list_node_t *node);
 void pop_d(doubly_linked_list_node_t *list);
 
 void insert_node_after_d(doubly_linked_list_node_t *list, doubly_linked_list_node_t *new_node, doubly_linked_list_node_t *node);
-void insert_node_before(doubly_linked_list_node_t *list, doubly_linked_list_node_t *new_node, doubly_linked_list_node_t *node);
+void insert_node_before_d(doubly_linked_list_node_t *list, doubly_linked_list_node_t *new_node, doubly_linked_list_node_t *node);
 
 void remove_node_d(doubly_linked_list_node_t *list, doubly_linked_list_node_t *node);
 

@@ -24,7 +24,14 @@ singly_linked_list_node_t;
  *
  * @return A single node with a value of 0 and the next node pointer of `NULL`.
  */
-singly_linked_list_node_t create_singly_linked_list_node();
+singly_linked_list_node_t *create_singly_linked_list_node(void);
+
+/**
+ * Deletes a single node and frees any memory being used by it.
+ *
+ * @param node A single node to delete and free up.
+ */
+void delete_singly_linked_list_node(singly_linked_list_node_t *node);
 
 /**
  * Push a node at the end of the linked list represented by `list`. The list of 
