@@ -16,3 +16,11 @@
 *.out
 *.app
 runner
+
+# Project Files
+*.xcworkspacedata
+*.xccheckout
+*.xcuserstate
+*.xcscheme
+*.pbxproj
+xcschememanagement.plist

@@ -30,7 +30,7 @@ all, I'm doing this to (re)learn.
 * Get a chance to play around with pure C again. No strange libraries or weird attachments. Just me, the compiler and the kernel.
 
 ### Environment
-It shouldn't really matter, but I'm doing this on Mac OS X 10.8 (Mountain Lion) with the latest version of Xcode's command line tools.
+It shouldn't really matter, but I'm doing this on Mac OS X 10.9 (Mavericks) with the latest version of Xcode's command line tools (5.0.2 as of this writing).
 
 ### How to Compile and Run
 In case you're crazy enough to want to look at my ugly code, there is a makefile 
@@ -44,7 +44,7 @@ following:
     
     MIT License (MIT)
     
-    Copyright (c) 2013 Ashkan Farhadtouski
+    Copyright (c) 2014 Ashkan Farhadtouski
     
     Permission is hereby granted, free of charge, to any person obtaining a copy
     of this software and associated documentation files (the "Software"), to 
